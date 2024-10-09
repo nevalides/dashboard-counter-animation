@@ -5,7 +5,7 @@
 }
 
 .image-background {
-  background-image: url("../public/bg-funds-2.jpg");
+  background-image: url("/bg-funds-2.jpg");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
