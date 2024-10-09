@@ -27,6 +27,7 @@ function csvSplit(row) {
 }
 
 const Counter = () => {
+    const [status, setStatus] = useState('idle')
     const [myVal, setMyVal] = useState({
         value: 0,
         prevValue: 0
@@ -37,12 +38,13 @@ const Counter = () => {
         console.log(value, prevValue);
 
         if (value !== prevValue) {
+            const startValue = prevValue === 0 ? value * 1.1 : prevValue
             gsap
                 .from(
                     ".value-container h1.value",
                     {
                         duration: 2,
-                        innerText: prevValue,
+                        innerText: startValue,
                         roundProps: "innerText",
                         onUpdate: function () {
                             this.targets().forEach(target => {
@@ -58,16 +60,21 @@ const Counter = () => {
     const callMyData = () => {
         axios.get(sheetUrl)
             .then((response) => response.data)
-            .then((csvText) => setMyVal(prev => ({
-                value: csvToObjects(csvText)[0]?.Value,
-                prevValue: prev.value
-            })))
+            .then((csvText) => {
+                setMyVal(prev => ({
+                    value: csvToObjects(csvText)[0]?.Value,
+                    prevValue: prev.value
+                }));
+                setStatus('success')
+            })
             .catch((error) => {
                 console.error('Error fetching CSV data:', error);
+                setStatus('error')
             });
     }
 
     useEffect(() => {
+        setStatus('loading')
         callMyData();
 
         setInterval(() => {
@@ -81,8 +88,16 @@ const Counter = () => {
 
     return (
         <div className='value-container flex flex-col items-center justify-center text-white p-6'>
-            <h1 className='value text-9xl font-bold leading-normal'>{myVal.value}</h1>
-            <h2 className='text-4xl font-semibold leading-none'>Sisa Dana Yang Dibutuhkan</h2>
+            {status === 'loading' &&
+                <h1 className='text-7xl font-bold leading-normal'>Loading...</h1>
+            }
+            {
+                status === 'success' &&
+                <>
+                    <h1 className='value text-9xl font-bold leading-normal'>{myVal.value}</h1>
+                    <h2 className='text-4xl font-semibold leading-none'>Sisa Dana Yang Dibutuhkan</h2>
+                </>
+            }
         </div>
     )
 }
