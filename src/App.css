@@ -3,3 +3,10 @@
   align-items: center;
   justify-content: center;
 }
+
+.image-background {
+  background-image: url("src/assets/bg-funds-2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}

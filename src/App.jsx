@@ -3,11 +3,11 @@ import './App.css'
 
 function App() {
   return (
-    <>
-      <div className='body-counter w-full h-full min-h-screen bg-gradient-to-b from-[#50abe5] to-[#0c4da2]'>
+    <div className='image-background'>
+      <div className='body-counter w-full h-full min-h-screen bg-black bg-opacity-50'>
         <Counter />
       </div>
-    </>
+    </div>
   )
 }
 

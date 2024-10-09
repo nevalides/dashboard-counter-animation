@@ -39,7 +39,7 @@ const Counter = () => {
         if (value !== prevValue) {
             gsap
                 .from(
-                    ".value-container p.value",
+                    ".value-container h1.value",
                     {
                         duration: 2,
                         innerText: prevValue,
@@ -80,8 +80,9 @@ const Counter = () => {
     }, [myVal])
 
     return (
-        <div className='value-container text-white text-7xl font-bold leading-normal'>
-            <p className='value'>{myVal.value}</p>
+        <div className='value-container flex flex-col items-center justify-center text-white p-6'>
+            <h1 className='value text-9xl font-bold leading-normal'>{myVal.value}</h1>
+            <h2 className='text-4xl font-semibold leading-none'>Sisa Dana Yang Dibutuhkan</h2>
         </div>
     )
 }
