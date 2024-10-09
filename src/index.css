@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --radial-gradient: radial-gradient(
+    99.54% 172.67% at 99.54% 99.39%,
+    #50abe5 0%,
+    #0c4da2 100%
+  );
+  --diamond-gradient: radial-gradient(
+    83.98% 108.86% at 54.7% 46.41%,
+    #92d3dd 0%,
+    #2a93d6 50%,
+    #2a93d6 100%
+  );
+}
+
+html,
+body {
+  font-family: "Inter", sans-serif;
+}
+
+/* Gradient Color */
+.bg-radial-gradient {
+  background: var(--radial-gradient);
+}
+.text-radial-gradient {
+  background: var(--radial-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
