@@ -89,13 +89,13 @@ const Counter = () => {
     return (
         <div className='value-container flex flex-col items-center justify-center text-white p-6'>
             {status === 'loading' &&
-                <h1 className='text-7xl font-bold leading-normal'>Loading...</h1>
+                <h1 className='lg:text-7xl md:text-5xl sm:text-3xl text-2xl font-bold leading-normal'>Loading...</h1>
             }
             {
                 status === 'success' &&
                 <>
-                    <h1 className='value text-9xl font-bold leading-normal'>{myVal.value}</h1>
-                    <h2 className='text-4xl font-semibold leading-none'>Sisa Dana Yang Dibutuhkan</h2>
+                    <h1 className='value lg:text-9xl md:text-7xl sm:text-5xl text-2xl font-bold leading-normal'>{myVal.value}</h1>
+                    <h2 className='lg:text-4xl md:text-3xl sm:text-2xl text-xl font-semibold leading-none'>Sisa Dana Yang Dibutuhkan</h2>
                 </>
             }
         </div>
