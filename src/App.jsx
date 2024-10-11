@@ -5,7 +5,7 @@ function App() {
   const currentDate = new Date();
   const formatDate = (date) => {
     const todayDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
-    const time = `${date.getHours()}:${date.getMinutes()}`
+    const time = `${date.getHours() > 10 ? date.getHours() : `0${date.getHours()}`}:${date.getMinutes() > 10 ? date.getMinutes() : `0${date.getMinutes()}`}`
 
     const days = ['Sunday', 'Monday', "Tuesday", 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
